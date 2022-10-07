@@ -5,10 +5,9 @@ using UnityEngine;
 // INHERITANCE
 public class BullDog : Dog
 {
-    // Start is called before the first frame update
-    void Awake()
+    // POLYMORPHISM
+    public override void Configure()
     {
         speed = 1.0f;
     }
-
 }

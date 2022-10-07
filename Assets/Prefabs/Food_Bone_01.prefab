@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6518552516354772457}
   - component: {fileID: 6518552516355883921}
   - component: {fileID: 6332320228113479956}
-  - component: {fileID: 3677857027190833254}
   - component: {fileID: 3921106506160449105}
   m_Layer: 0
   m_Name: Food_Bone_01
@@ -99,19 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nourishment: 5
---- !u!114 &3677857027190833254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6518552516357971285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d25bd1502a6548b408c7c271452f747d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 40
 --- !u!114 &3921106506160449105
 MonoBehaviour:
   m_ObjectHideFlags: 0

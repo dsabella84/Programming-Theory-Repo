@@ -5,11 +5,9 @@ using UnityEngine;
 // INHERITANCE
 public class BorderCollie : Dog
 {
-    // Start is called before the first frame update
-    void Awake()
+    // POLYMORPHISM
+    public override void Configure()
     {
         speed = 2.0f;
     }
-
-
 }

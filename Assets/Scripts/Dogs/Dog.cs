@@ -7,7 +7,6 @@ public class Dog : MonoBehaviour
     public float Speed {
         get { return speed;}
     }
-    [SerializeField] Food dogFood;
 
     // ENCAPSULATION
     protected float speed;
@@ -17,11 +16,10 @@ public class Dog : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {            
-        PerformMove();
     }
 
-    public virtual void PerformMove()
+    public virtual void Configure()
     {
-        
+        speed = 0;
     }
 }

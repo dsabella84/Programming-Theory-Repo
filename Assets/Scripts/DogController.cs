@@ -10,14 +10,21 @@ public class DogController : MonoBehaviour
     private Dog dog;
     private bool isMoving;
 
-    void Start()
+    void Awake()
     {
-        dog = GetComponent<Dog>();
         animator = GetComponent<Animator>();   
-         
-        isMoving = false;
+
+        dog = GetComponent<Dog>();
+        dog.Configure();
+        
         currentSpeed = dog.Speed;
         maxSpeed = dog.Speed;
+    }
+
+    void Start()
+    {
+
+        isMoving = false;
     }
 
     // Update is called once per frame
