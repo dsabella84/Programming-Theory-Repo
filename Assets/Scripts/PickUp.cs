@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        Debug.Log(other.tag + "Ran into pickup " + this.name);
+
+        if (other.tag == "Player")
+        {
+            PlayerController player = other.GetComponent<PlayerController>();
+
+            Food food = GetComponent<Food>();
+
+            player.SetActiveFood(food);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

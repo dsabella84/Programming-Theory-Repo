@@ -8,7 +8,7 @@ public class DogController : MonoBehaviour
     [SerializeField] float currentSpeed;
     [SerializeField] float maxSpeed;
     private Dog dog;
-    private bool isMoving;
+    private bool isEating = false;
 
     void Awake()
     {
@@ -23,16 +23,43 @@ public class DogController : MonoBehaviour
 
     void Start()
     {
-
-        isMoving = false;
+        isEating = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentSpeed = dog.Speed;
-        transform.Translate(Vector3.forward * Time.deltaTime * dog.Speed);
+        if (!isEating)
+        {
+            currentSpeed = dog.Speed;
+            transform.Translate(Vector3.forward * Time.deltaTime * dog.Speed);
 
-        animator.SetFloat("Speed_f", currentSpeed/ maxSpeed * 0.5f);
+            animator.SetFloat("Speed_f", currentSpeed / maxSpeed * 0.5f);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Food"))
+        {
+            other.GetComponent<MoveForward>().enabled = false;
+            StartCoroutine(EatFoodItem());
+            Debug.Log("Animal Fed");
+        }
+    }
+
+    private IEnumerator EatFoodItem()
+    {
+        isEating = true;
+
+        animator.SetFloat("Speed_f", 0);
+        animator.SetBool("Eat_b", true);
+
+        yield return new WaitForSeconds(2.0f);
+
+        transform.forward = new Vector3(-1, 0, 0);
+
+        animator.SetBool("Eat_b", false);
+        isEating = false;
     }
 }
