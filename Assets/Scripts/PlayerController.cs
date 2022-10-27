@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,13 +11,29 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform handLocation;
     
     private float xRange = 20;
-    private bool isThrowing = false;
+    private bool isThrowing = false;   
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();            
     }
+
+    private void OnEnable()
+    {
+        GameManager.OnGameOver += GameOver;
+    }
+
+    private void GameOver()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameOver -= GameOver;
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -49,21 +66,24 @@ public class PlayerController : MonoBehaviour
             {
                 isThrowing = true;
 
-                StartCoroutine(ThrowFood());
+                ThrowFood();
             }
         }
         
     }
 
-    private IEnumerator ThrowFood()
+    private void ThrowFood()
     {
         transform.forward = new Vector3(-1, 0, 0);
         animator.SetFloat("Speed_f", 0);
         animator.SetInteger("Animation_int", 10);
+    }
 
-        yield return new WaitForSeconds(0.5f);
+    public void ThrowComplete()
+    {
         animator.SetInteger("Animation_int", 0);
 
+        this.activeFoodItem = null;
         isThrowing = false;
     }
 

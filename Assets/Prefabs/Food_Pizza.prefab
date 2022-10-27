@@ -145,6 +145,10 @@ PrefabInstance:
       value: 0.011418879
       objectReference: {fileID: 0}
     - target: {fileID: 5529533229222065407, guid: 94fe333ae5d103c4997b751ac06dc950, type: 3}
+      propertyPath: scoreValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529533229222065407, guid: 94fe333ae5d103c4997b751ac06dc950, type: 3}
       propertyPath: nourishment
       value: 20
       objectReference: {fileID: 0}

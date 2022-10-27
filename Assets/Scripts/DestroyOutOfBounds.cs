@@ -10,7 +10,7 @@ public class DestroyOutOfBounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.z > topBound)
+        if (transform.position.x > topBound)
         {
             // Instead of destroying the projectile when it leaves the screen
             Destroy(gameObject);
@@ -19,9 +19,8 @@ public class DestroyOutOfBounds : MonoBehaviour
             //gameObject.SetActive(false);
 
         }
-        else if (transform.position.z < lowerBound)
+        else if (transform.position.x < lowerBound)
         {
-            Debug.Log("Game Over!");
             Destroy(gameObject);
         }
 
